@@ -15,16 +15,16 @@ padding: 0.5em;
 overflow: hidden;
 `
 
-const CubeFace = ({ children, face }) => {
+const CubeFace = ({ children, face, occlusion }) => {
     const side = useDimensions()
     const meshRef = useRef()
     const { position, rotation } = arrangeGeometry(face, side)
     return (
-        <mesh ref={meshRef}>
             <Html 
             transform
             occlude
             position={position}
+            distanceFactor={10}
             rotation-x={rotation.x}
             rotation-y={rotation.y}
             rotation-z={rotation.z}
@@ -33,18 +33,11 @@ const CubeFace = ({ children, face }) => {
                     {children}
                 </Wrapper>
             </Html>
-        </mesh>
     )
 }
 
-export const convertUnits = sideLength =>
-    // Positional units in three.js are arbitrary
-    // This converts dynamic lengths (pixels) to 3D coordinates (AU)
-    // Thanks Excel! R^2 = 0.9997
-    ((sideLength + 46.986) / 163.24)
-
 const arrangeGeometry = (face, side) => {
-    let u = convertUnits(side)
+    let u = side/155
     switch (face) {
         case 'front':
             return {

@@ -5,7 +5,8 @@ import Hello from '../components/Hello'
 import Github from '../components/Github'
 import Projects from '../components/Projects'
 import Skills from '../components/Skills'
-import TopFace from '../components/TopFace'
+import Scene from '../components/Scene'
+import Screen from '../components/Screen'
 import Contact from '../components/Contact'
 
 const createSquare = () => {
@@ -31,6 +32,7 @@ const Cube = () => {
     // })
 
     const [sideLength, setSideLength] = useState(createSquare())
+    const [occlusion, setOcclusion] = useState(true)
     // const [eventTracker, setEventTracker] = useState({
     //     w: null,
     //     a: null,
@@ -64,16 +66,13 @@ const Cube = () => {
 
     return (
         <Geometry.Provider value={sideLength}>
-        <Suspense fallback={null}>
-        <group ref={groupRef} dispose={null}>
             <Hello face={'front'} />
             <Github face={'right'} />
             <Projects face={'back'} />
             <Skills face={'left'} />
-            {/* <TopFace face={'top'} /> */}
+            <Scene face={'top'} />
+            <Screen />
             <Contact face={'bottom'} />
-        </group>
-        </Suspense>
         </Geometry.Provider>
     )
 }
