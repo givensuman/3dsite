@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import './styles/index.css'
 
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, useProgress } from '@react-three/drei'
+import { gsap } from 'gsap'
 
 import Cube from './views/Cube'
 import Loading from './views/Loading'
@@ -50,7 +51,7 @@ const App = () => {
       position: 'absolute'
      }}
     camera={{
-      position: [0, 8, 12], 
+      position: [0, 8, 24], 
       fov: 50 
     }}
     >
