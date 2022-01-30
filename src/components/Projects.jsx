@@ -1,20 +1,20 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-import { useDimensions } from '../views/Cube'
+import { useDimensions } from '../hooks/useConversion'
 import theme from '../styles/theme'
 
 import CubeFace from './CubeFace'
 
 const Wrapper = styled.div`
     h1 {
-        margin-bottom: 5%;
-        font-size: ${props => props.side/30}px;
+        margin: 2% 0;
+        font-size: ${props => props.p(4)}px;
     }
 `
 
 const Project = styled.img`
-    max-width: ${props => props.side/6}px;
+    max-width: ${props => props.p(20)}px;
     position: relative;
     margin: 0.2em;
     border-radius: 0.5em;
@@ -46,11 +46,11 @@ const Description = styled.span`
     padding: 0.4em;
     border-radius: 0.5em;
     box-shadow: -4px 4px 10px ${theme.dark};
-    width: ${props => props.side/4.5}px;
-    font-size: ${props => props.side/60}px;
+    width: ${props => props.p(27)}px;
+    font-size: ${props => props.p(2)}px;
     ${props => {
         if (props.orientation === 'left') {
-            return `left: 50%;`
+            return `left: 20%;`
         } else {
             return `right: 20%;`
         }
@@ -80,25 +80,25 @@ const projectsArray = [
 
 const Projects = ({ face }) => {
 
-    const side = useDimensions()
+    const { p } = useDimensions()
 
     return (
         <CubeFace face={face}>
-            <Wrapper side={side} className='col center'>
+            <Wrapper p={p} className='col center'>
                 <h1>Popular Projects</h1>
                 <div className='col'>
                     {projectsArray.map((item, index) => 
                     <div key={index} style={{ position: 'relative' }}>
                         <a href={item.href}>
                         <Project
-                        side={side}
+                        p={p}
                         orientation={index%2 === 0 ? 'right' : 'left'}
                         src={item.src}
                         alt={item.name}
                         />
                         </a>
                         <Description
-                        side={side}
+                        p={p}
                         orientation={index%2 === 0 ? 'right' : 'left'}
                         >
                             {item.description}

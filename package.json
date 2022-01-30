@@ -10,13 +10,15 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "framer-motion": "^6.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
-    "react-textfit": "^1.1.1",
-    "react-tooltip": "^4.2.21",
+    "react-simple-tooltip": "^2.6.3",
+    "react-switch": "^6.0.0",
+    "react-typist": "^2.0.5",
+    "snake-game-react": "^1.0.6",
     "three": "^0.136.0",
-    "typed.js": "^2.0.12",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

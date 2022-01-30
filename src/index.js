@@ -1,11 +1,15 @@
-import React, { useState, useEffect, Suspense } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import './styles/index.css'
 
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, useProgress } from '@react-three/drei'
+
 import Cube from './views/Cube'
-import Keyboard from './models/Keyboard'
+import Loading from './views/Loading'
+
+// import skyBackground from './assets/misc/sky.jpg'
+import spaceBackground from './assets/misc/space.jpg'
 
 const App = () => {  
 
@@ -13,6 +17,10 @@ const App = () => {
   height: window.innerHeight,
   width: window.innerWidth
   })
+
+  // const [background, setBackground] = useState(skyBackground)
+  // const handleBackground = () => 
+  //   setBackground(background === skyBackground ? spaceBackground : skyBackground)
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,14 +33,30 @@ const App = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  const canvasRef = useRef()
+  const [loading, setLoading] = useState(true)
+  const { active, progress } = useProgress()
+  useEffect(() => {
+    if (!active) setTimeout(() => setLoading(false), 500)
+  }, [active])
+
   return (
+    <>
+    <Loading loading={loading} progress={progress} />
     <Canvas
+    ref={canvasRef}
     style={{ 
-      background: '#171717',
+      backgroundImage: `url(${spaceBackground})`,
+      backgroundSize: '100% 100%',
+      backgroundRepeat: 'norepeat',
       height: dimensions.height,
-      width: dimensions.width
+      width: dimensions.width,
+      position: 'absolute'
      }}
-    camera={{ position: [0, 0, 15], fov: 50 }}
+    camera={{ 
+      position: [0, 8, 20], 
+      fov: 50 
+    }}
     >
       <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
       <ambientLight intensity={0.1} />
@@ -41,6 +65,7 @@ const App = () => {
       <pointLight position={[10, 10, 10]} intensity={0.7} />
       <Cube />
     </Canvas>
+    </>
   )
 }
 

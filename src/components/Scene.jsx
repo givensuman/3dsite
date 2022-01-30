@@ -1,64 +1,83 @@
-import React, { Suspense, useRef } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import * as THREE from 'three'
 
-import { useDimensions } from '../views/Cube'
+import { useDimensions } from '../hooks/useConversion'
 import theme from '../styles/theme'
 
 import Keyboard from '../models/Keyboard'
 import Monitor from '../models/Monitor'
 import Coffee from '../models/Coffee'
-import Plant from '../models/Plant'
 
-const TopFace = () => {
-    const side = useDimensions()
-    const keyboardRef = useRef()
-    // There are a lot of magic numbers here based on side value
-    // They should work across window resizings
-    // But there's no real logic to it, just trial and error
+const Models = () => {
+    const { u, side } = useDimensions()
+
     return (
-        <>
         <Suspense fallback={null}>
         <Keyboard
-        ref={keyboardRef}
-        position={[-side/1200, -side/193, -side/250]}
-        scale={[side/16200, side/16200, side/16200]}
+        position={[-u(15), 0, -u(50)]}
+        scale={[side/16200, side/29500, side/16200]}
         />
         <Monitor 
-        position={[0, side/152, -side/120]}
+        position={[0, u(100), -u(130)]}
         scale={[side/70000, side/70000, side/70000]}
-        />
+        />        
         <Coffee 
-        position={[side/200, side/155, -side/100]}
+        position={[u(80), u(100), -u(90)]}
         scale={[side/1500, side/1500, side/1500]}
         />
-        <Plant 
-        position={[-side/200, side/115, -side/105]}
-        scale={[side/15000, side/15000, side/15000]}
-        />
         </Suspense>
+    )
+}
+
+const TopFace = () => {
+    // Note that when using u, the percentages need to be doubled as I decided to make the cube face half the { side } length. Doubling numbers here is easier than fixing relative css in each component
+    // Scaling still uses essentially arbitrary "fix" factors as models come in different sizes
+    const { u, side } = useDimensions()
+
+    return (
+        <>
+        <Models />
+        <group>
         {/* Cube */}
         <mesh 
-        position={[0, 0.1, -side/155]}
+        position={[0, 0, -u(199/2) - 0.03]}
         >
             <boxBufferGeometry attach='geometry' args={
-                [side/78, side/78, side/78]
+                [u(199), u(199), u(199)]
                 } />
-            <meshBasicMaterial attach='material' color={theme.background} side={THREE.DoubleSide} />
+            <meshToonMaterial 
+            attach='material'
+            color={theme.background} 
+            side={THREE.DoubleSide} 
+            />
         </mesh>
         {/* Mousepad */}
         <mesh
-        position={[0, side/154, -side/250]}
+        position={[0, u(100), -u(50)]}
         >
-            <boxBufferGeometry attach='geometry' args={[side/120, side/10000, side/250]} />
-            <meshStandardMaterial attach='material' color={theme.dark}/>
+            <boxBufferGeometry 
+            attach='geometry' 
+            args={[u(120), 0.01, u(75)]} 
+            />
+            <meshStandardMaterial 
+            attach='material' 
+            color={theme.dark}
+            />
         </mesh>
         {/* Coffee */}
         <mesh
-        position={[side/208, side/140, -side/100]}
+        position={[u(77), u(110), -u(90)]}
         >
-            <sphereBufferGeometry attach='geometry' args={[0.588, 10, 10]} />
-            <meshStandardMaterial color={'darkbrown'} />
+            <sphereBufferGeometry 
+            attach='geometry' 
+            args={[u(9), 10, 10]} 
+            />
+            <meshStandardMaterial 
+            attach='material'
+            color={'rgb(150,75,0)'} 
+            />
         </mesh>
+        </group>
         </>
     )
 }

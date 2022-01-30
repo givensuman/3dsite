@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from '@emotion/styled'
-import ReactTooltip from 'react-tooltip'
+import Tooltip from 'react-simple-tooltip'
 
-import { useDimensions } from '../views/Cube'
+import { useDimensions } from '../hooks/useConversion'
 import theme from '../styles/theme'
 
 import CubeFace from './CubeFace'
@@ -13,12 +13,12 @@ import { ReactComponent as CodeBranch } from '../assets/icons/code-branch-solid.
 const Wrapper = styled.div`
     #avatar {
         border-radius: 50%;
-        height: ${props => props.side/5}px;
+        height: ${props => props.p(20)}px;
         border: solid 2px ${theme.accent2};
     }
 
     #stats {
-        width: ${props => props.side/2}px;=
+        width: ${props => props.p(50)}px;
         user-select: none;
     }
 
@@ -28,12 +28,12 @@ const Wrapper = styled.div`
         color: ${theme.light};
         margin: 0 1em;
         width: 100%;
-        height: ${props => props.side/10}px;
+        height: ${props => props.p(8)}px;
         border-radius: 0.5em;
         cursor: pointer;
         padding: 0 0.4em;
         transition: background-color 0.4s, box-shadow 0.3s;
-        font-size: ${props => props.side/58}px;
+        font-size: ${props => props.p(1.6)}px;
         text-decoration: none;
         background-position: left;
         background-size: 200% 200%;
@@ -48,46 +48,49 @@ const Wrapper = styled.div`
             background-position: right;
             box-shadow: 2px 2px 10px ${theme.dark};
         }
+
+        span {
+            margin: 0 2%;
+        }
     }
 `
 
 const Github = ({ face }) => {
 
-    const side = useDimensions()
+    const { p } = useDimensions()
 
     const iconProps = {
-        maxHeight: side/40,
+        maxHeight: p(2.8),
         margin: '0 0.3em',
         color: theme.light
     }
 
     return (
         <CubeFace face={face}>
-            <Wrapper side={side}>
+            <Wrapper p={p}>
             <div className='row left'>
+                <Tooltip
+                content="Isn't he dreamy?"
+                background={theme.dark}
+                color={theme.light}
+                radius={'0.5em'}
+                border={'transparent'}
+                fadeEasing='ease-in-out'
+                fadeDuration={200}
+                >
                 <img
                 id='avatar'
                 src={require('../assets/misc/github_profile.png')}
                 alt='profile'
-                data-for='avatar-tooltip'
-                onLoad={() => ReactTooltip.rebuild()}
                 />
-                <ReactTooltip
-                id='avatar-tooltip'
-                solid
-                backgroundColor={theme.dark}
-                textColor={theme.light}
-                style={{
-                    zIndex: 2
-                }}
-                >Isn't he dreamy?</ReactTooltip>
+                </Tooltip>
                 <a
                 id='github'
                 href='https://www.github.com/givensuman' 
                 className='row center'
                 >
                     <CodeBranch style={iconProps} />
-                    Check out my GitHub
+                    <span>Check out my GitHub</span>
                     <ArrowRight style={iconProps} />
                 </a>
             </div>

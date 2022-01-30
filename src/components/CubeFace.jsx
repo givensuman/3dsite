@@ -5,39 +5,35 @@ import * as THREE from 'three'
 
 import theme from '../styles/theme'
 
-import { useDimensions } from '../views/Cube'
+import { useDimensions } from '../hooks/useConversion'
 
 const Wrapper = styled.div`
-height: ${props => props.side/2}px;
-width: ${props => props.side/2}px;
+height: ${props => props.length}px;
+width: ${props => props.length}px;
 background-color: ${theme.background};
 padding: 0.5em;
-overflow: hidden;
 `
 
-const CubeFace = ({ children, face, occlusion }) => {
-    const side = useDimensions()
-    const meshRef = useRef()
-    const { position, rotation } = arrangeGeometry(face, side)
+const CubeFace = ({ children, face }) => {
+    const { p, u } = useDimensions()
+    const { position, rotation } = arrangeGeometry(face, u(100))
     return (
             <Html 
             transform
             occlude
             position={position}
-            distanceFactor={10}
             rotation-x={rotation.x}
             rotation-y={rotation.y}
             rotation-z={rotation.z}
             >
-                <Wrapper side={side}>
+                <Wrapper length={p(50)}>
                     {children}
                 </Wrapper>
             </Html>
     )
 }
 
-const arrangeGeometry = (face, side) => {
-    let u = side/155
+const arrangeGeometry = (face, u) => {
     switch (face) {
         case 'front':
             return {

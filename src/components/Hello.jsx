@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-import { useDimensions } from '../views/Cube'
+import { useDimensions } from '../hooks/useConversion'
 
 import CubeFace from './CubeFace'
 import Name from './Name'
@@ -11,29 +11,29 @@ const Wrapper = styled.div`
     padding: 0 1em;
 
     h1 {
-        font-size: ${props => props.side/20}px;
+        font-size: ${props => props.p(6)}px;
     }
 
     h2 {
-        font-size: ${props => props.side/30}px;
+        font-size: ${props => props.p(3)}px;
     }
 
     h3 {
-        font-size: ${props => props.side/60}px;
+        font-size: ${props => props.p(1.5)}px;
     }
 
     p {
-        font-size: ${props => props.side/40}px;
+        font-size: ${props => props.p(2)}px;
     }
 `
 
 const Hello = ({ face }) => {
 
-    const side = useDimensions()
+    const { p } = useDimensions()
 
     return (
         <CubeFace face={face}>
-            <Wrapper side={side}>   
+            <Wrapper p={p}>   
             <h1>Hi! I'm <Name>Given.</Name></h1>
             <h2>I build things on the web.</h2>
             <h3>(Like this... cube thing)</h3>

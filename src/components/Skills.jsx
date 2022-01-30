@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import ReactTooltip from 'react-tooltip'
+import Tooltip from 'react-simple-tooltip'
 
-import { useDimensions } from '../views/Cube'
+import { useDimensions } from '../hooks/useConversion'
 import theme from '../styles/theme'
 
 import CubeFace from '../components/CubeFace'
@@ -21,10 +21,10 @@ import { ReactComponent as StackOverflow } from '../assets/logos/stackoverflow.s
 const Wrapper = styled.div`
     h1 {
         user-select: none;
-        font-size: ${props => props.side/20}px;
+        font-size: ${props => props.p(5)}px;
 
         img {
-            max-height: ${props => props.side/20}px;
+            max-height: ${props => props.p(5)}px;
             margin-right: 0.2em;
         }
     }
@@ -35,7 +35,7 @@ const Wrapper = styled.div`
     }
 
     svg {
-        max-height: ${props => props.side/10}px;
+        max-height: ${props => props.p(10)}px;
     }
 `
 
@@ -48,9 +48,9 @@ const SkillsWrapper = styled.div`
 `
 
 const LogoWrapper = styled.div`
-    max-width: ${props => props.side/10}px;
+    max-width: ${props => props.p(10)}px;
     height: auto;
-    margin: ${props => props.side/100}px;
+    margin: ${props => props.p(0.75)}px;
     display: flex;
     transition: transform 0.2s;
 
@@ -104,11 +104,11 @@ const skillsArray=[
 
 const Skills = ({ face }) => {
 
-    const side = useDimensions()
+    const { p } = useDimensions()
 
     return (
         <CubeFace face={face}>
-            <Wrapper className='col center' side={side}>
+            <Wrapper className='col center' p={p}>
             <h1 className='row center'>
                 <img 
                 src={require('../assets/misc/hackercat.png')}
@@ -116,22 +116,22 @@ const Skills = ({ face }) => {
                 />
                 My Skills
             </h1>
-            <SkillsWrapper onLoad={() => ReactTooltip.reload()}>
+            <SkillsWrapper>
             {skillsArray.map((item, index) =>
                 <div key={index}>
-                    <LogoWrapper
-                    data-tip={item.name}
-                    side={side}
-                    >
+                <Tooltip
+                content={item.name}
+                background={theme.dark}
+                color={theme.light}
+                radius={'0.5em'}
+                border={'transparent'}
+                fadeEasing='ease-in-out'
+                fadeDuration={200}
+                >
+                    <LogoWrapper p={p}>
                     { React.cloneElement(item.component) }
                     </LogoWrapper>
-                    <ReactTooltip                 
-                    backgroundColor={theme.dark}
-                    textColor={theme.light}
-                    style={{
-                        zIndex: 2
-                    }}
-                    />
+                </Tooltip>
                 </div>
             )}
             </SkillsWrapper>
