@@ -8,7 +8,6 @@ import { OrbitControls, useProgress } from '@react-three/drei'
 import Cube from './views/Cube'
 import Loading from './views/Loading'
 
-// import skyBackground from './assets/misc/sky.jpg'
 import spaceBackground from './assets/misc/space.jpg'
 
 const App = () => {  
@@ -17,10 +16,6 @@ const App = () => {
   height: window.innerHeight,
   width: window.innerWidth
   })
-
-  // const [background, setBackground] = useState(skyBackground)
-  // const handleBackground = () => 
-  //   setBackground(background === skyBackground ? spaceBackground : skyBackground)
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,6 +31,7 @@ const App = () => {
   const canvasRef = useRef()
   const [loading, setLoading] = useState(true)
   const { active, progress } = useProgress()
+
   useEffect(() => {
     if (!active) setTimeout(() => setLoading(false), 500)
   }, [active])
@@ -53,8 +49,8 @@ const App = () => {
       width: dimensions.width,
       position: 'absolute'
      }}
-    camera={{ 
-      position: [0, 8, 20], 
+    camera={{
+      position: [0, 8, 12], 
       fov: 50 
     }}
     >

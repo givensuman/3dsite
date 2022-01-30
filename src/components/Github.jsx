@@ -73,7 +73,7 @@ const Github = ({ face }) => {
                 content="Isn't he dreamy?"
                 background={theme.dark}
                 color={theme.light}
-                radius={'0.5em'}
+                radius={5}
                 border={'transparent'}
                 fadeEasing='ease-in-out'
                 fadeDuration={200}

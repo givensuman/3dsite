@@ -123,7 +123,7 @@ const Skills = ({ face }) => {
                 content={item.name}
                 background={theme.dark}
                 color={theme.light}
-                radius={'0.5em'}
+                radius={5}
                 border={'transparent'}
                 fadeEasing='ease-in-out'
                 fadeDuration={200}

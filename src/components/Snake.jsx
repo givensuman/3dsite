@@ -153,6 +153,7 @@ const Snake = ({ close }) => {
 
   useEffect(() => {
       startGame()
+      canvasRef.current.autoFocus = true
   }, [])
 
   return (
@@ -169,6 +170,7 @@ const Snake = ({ close }) => {
         </Title>
       <Canvas
         ref={canvasRef}
+        autoFocus
         width={`${CANVAS_SIZE[0]}px`}
         height={`${CANVAS_SIZE[1]}px`}
       />
