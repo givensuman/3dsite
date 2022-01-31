@@ -11,8 +11,8 @@ This is an update to my personal site where I render essentially the same page i
 
 Remarkably, this didn't take as long as I'd think. Big thanks to the people at Poimandres for their extensive documentation and examples.
 
-#### Can I copy this?
+### Can I copy this?
 Not in its entirety, but you can of course take anything you might find useful in building something original.
 
-#### Is this maintained?
+### Is this maintained?
 I will definitely add more to this when I get the chance.
