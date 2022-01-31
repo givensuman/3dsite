@@ -2,9 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import './styles/index.css'
 
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import { OrbitControls, useProgress } from '@react-three/drei'
-import { gsap } from 'gsap'
 
 import Cube from './views/Cube'
 import Loading from './views/Loading'
@@ -33,13 +32,18 @@ const App = () => {
   const [loading, setLoading] = useState(true)
   const { active, progress } = useProgress()
 
+  const isMobile = () => {
+    return ('ontouchstart' in document.documentElement)
+  }
+
   useEffect(() => {
-    if (!active) setTimeout(() => setLoading(false), 500)
+    let mobile = isMobile()
+    if (!mobile && !active) setTimeout(() => setLoading(false), 500)
   }, [active])
 
   return (
     <>
-    <Loading loading={loading} progress={progress} />
+    <Loading setLoading={setLoading} mobile={isMobile()} loading={loading} progress={progress} />
     <Canvas
     ref={canvasRef}
     style={{ 

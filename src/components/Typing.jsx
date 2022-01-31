@@ -2,18 +2,24 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Typist from 'react-typist'
 
+import { useDimensions } from '../hooks/useConversion'
+
 const StyledTypist = styled(Typist)`
-    font-size: 6px;
     padding: 5px 5px;
 
     pre {
         margin: 0;
+        font-size: 20%;
     }
 `
 
 const Typing = () => {
+
+    const { p } = useDimensions()
+
     return (
         <StyledTypist
+        p={p}
         cursor={{
             show: false
         }}

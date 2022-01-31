@@ -4,6 +4,7 @@ import { Html } from '@react-three/drei'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import { useDimensions } from '../hooks/useConversion'
+import { useInterval } from '../hooks/useInterval'
 import theme from '../styles/theme'
 
 import { ReactComponent as Close } from '../assets/icons/close.svg'
@@ -130,15 +131,11 @@ const Screen = () => {
     const [showSnake, setShowSnake] = useState(false)
     const [time, setTime] = useState('0:00')
     
-    useEffect(() => {
-        const getTime = () => {
-            let time = new Date().toTimeString().substr(0, 5)
-            setTime(time)
-        }
-        getTime()
-        const timeInterval = setInterval(getTime, 60000)
-        return () => clearInterval(timeInterval)
-    }, [])
+    const getTime = () => {
+        let time = new Date().toTimeString().substr(0, 5)
+        setTime(time)
+    }
+    useInterval(getTime, 60000)
 
     return (
         <Html 

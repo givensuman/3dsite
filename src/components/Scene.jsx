@@ -22,7 +22,7 @@ const Models = () => {
         scale={[side/70000, side/70000, side/70000]}
         />        
         <Coffee 
-        position={[u(80), u(100), -u(90)]}
+        position={[u(80), u(98), -u(90)]}
         scale={[side/1500, side/1500, side/1500]}
         />
         </Suspense>
@@ -40,7 +40,7 @@ const TopFace = () => {
         <group>
         {/* Cube */}
         <mesh 
-        position={[0, 0, -u(199/2) - 0.03]}
+        position={[0, 0, -u(200/2)]}
         >
             <boxBufferGeometry attach='geometry' args={
                 [u(199), u(199), u(199)]

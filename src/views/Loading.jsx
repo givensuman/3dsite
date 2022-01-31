@@ -41,7 +41,27 @@ const LoaderBar = styled.div`
     transition: width 0.7s;
 `
 
-const Loading = ({ progress, loading }) => {
+const Warning = styled.div`
+    font-size: 2rem;
+    max-width: 500px;
+    padding: 0 15px 0;
+
+    button {
+        margin-top: 2%;
+        padding: 1em;
+        border-radius: 0.5em;
+        border: none;
+        background-color: ${theme.background};
+        color: ${theme.light};
+        font-size: 75%;
+
+        &:disabled {
+            opacity: 0.3;
+        }
+    }
+`
+
+const Loading = ({ progress, loading, mobile, setLoading }) => {
     const [color, setColor] = useState(theme.accent1)
     useEffect(() => {
         setColor(randomBackground())
@@ -63,6 +83,15 @@ const Loading = ({ progress, loading }) => {
                 <LoaderBar progress={progress} />
             </LoaderHolder>
             </div>
+            {mobile && 
+            <Warning className='col center'>
+                It looks like you're on a mobile device.
+                This webpage renders in 3D, and mobile users may experience poor performance.
+                <button
+                disabled={progress < 100}
+                onClick={() => setLoading(false)}>Continue</button>
+            </Warning>
+            }
         </Wrapper>
         }
     </AnimatePresence>

@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 const Project = styled.img`
     max-width: ${props => props.p(20)}px;
     position: relative;
-    margin: 0.2em;
+    margin: ${props => props.p(0.2)}px;
     border-radius: 0.5em;
     background: linear-gradient(to right, 
         ${theme.accent3}, 
