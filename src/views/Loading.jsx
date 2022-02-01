@@ -16,6 +16,7 @@ const randomBackground = () => {
 
     return options[Math.floor(Math.random() * options.length)]
 }
+
 const Wrapper = styled(motion.div)`
     background-color: ${props => props.color};
     color: ${theme.accent5};
@@ -75,39 +76,39 @@ const Loading = ({ progress, loading, mobile, setLoading }) => {
     const navigate = useNavigate()
 
     return (
-    <AnimatePresence>
-        {loading && <Wrapper 
-        className='col center' 
-        color={color}
-        key='Loading-component'
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        >
-            <div className='col center'>
-            <Name>Loading</Name>
-            <LoaderHolder>
-                <LoaderBar progress={progress} />
-            </LoaderHolder>
-            </div>
-            {mobile && 
-            <Warning className='col center'>
-                It looks like you're on a mobile device.
-                This webpage renders in 3D, and mobile users may experience poor performance.
-                <button
-                disabled={progress < 100}
-                onClick={() => setLoading(false)}
-                >
-                    Continue in 3D
-                </button>
-                <button onClick={() => navigate('/2d')}>
-                    Go to mobile-friendly version
-                </button>
-            </Warning>
+        <AnimatePresence>
+            {loading && <Wrapper 
+            className='col center' 
+            color={color}
+            key='Loading-component'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            >
+                <div className='col center'>
+                <Name>Loading</Name>
+                <LoaderHolder>
+                    <LoaderBar progress={progress} />
+                </LoaderHolder>
+                </div>
+                {mobile && 
+                <Warning className='col center'>
+                    It looks like you're on a mobile device.
+                    This webpage renders in 3D, and mobile users may experience poor performance.
+                    <button
+                    disabled={progress < 100}
+                    onClick={() => setLoading(false)}
+                    >
+                        Continue in 3D
+                    </button>
+                    <button onClick={() => navigate('/2d')}>
+                        Go to mobile-friendly version
+                    </button>
+                </Warning>
+                }
+            </Wrapper>
             }
-        </Wrapper>
-        }
-    </AnimatePresence>
+        </AnimatePresence>
     )
 }
 
