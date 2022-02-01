@@ -14,7 +14,8 @@ import { ContactFlat } from '../components/Contact'
 const Body = styled.div`
     width: 100%;
     overflow-x: hidden;
-    margin-bottom: 10em;
+    margin-top: 5%;
+    margin-bottom: 10%;
 `
 
 const Wrapper = styled.div`
