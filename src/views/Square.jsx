@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
-import Fade from 'react-reveal/Fade'
+import { Fade } from 'react-awesome-reveal'
 import { useNavigate } from 'react-router-dom'
 
 import theme from '../styles/theme'
@@ -81,7 +81,7 @@ const Square = () => {
                 <Button onClick={() => navigate('/')}>View In 3D</Button>
                 </div>
                 {components.map((item, index) => 
-                    <Fade left={!index%2} right={index%2}>
+                    <Fade direction={index%2 ? 'right' : 'left'}>
                         <Component>
                         {React.cloneElement(item, {
                             p: p
