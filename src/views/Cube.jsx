@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import GeometryProvider from '../hooks/useConversion'
 
@@ -14,14 +14,16 @@ import Gui from '../components/Gui'
 const Cube = () => {
     return (
         <GeometryProvider>
-            <Hello face={'front'} />
-            <Github face={'right'} />
-            <Projects face={'back'} />
-            <Skills face={'left'} />
-            <Scene />
-            <Screen />
-            <Contact face={'bottom'} />
-            <Gui />
+            <Suspense ref={null}>
+                <Hello face={'front'} />
+                <Github face={'right'} />
+                <Projects face={'back'} />
+                <Skills face={'left'} />
+                <Scene />
+                <Screen />
+                <Contact face={'bottom'} />
+                <Gui />
+            </Suspense>
         </GeometryProvider>
     )
 }

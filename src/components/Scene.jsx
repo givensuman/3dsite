@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react'
+import React, { Suspense } from 'react'
 import * as THREE from 'three'
 
 import { useDimensions } from '../hooks/useConversion'
@@ -13,18 +13,18 @@ const Models = () => {
 
     return (
         <Suspense fallback={null}>
-        <Keyboard
-        position={[-u(15), 0, -u(50)]}
-        scale={[side/16200, side/29500, side/16200]}
-        />
-        <Monitor 
-        position={[0, u(100), -u(130)]}
-        scale={[side/70000, side/70000, side/70000]}
-        />        
-        <Coffee 
-        position={[u(80), u(98), -u(90)]}
-        scale={[side/1500, side/1500, side/1500]}
-        />
+            <Keyboard
+            position={[-u(15), 0, -u(50)]}
+            scale={[side/16200, side/29500, side/16200]}
+            />
+            <Monitor 
+            position={[0, u(100), -u(130)]}
+            scale={[side/70000, side/70000, side/70000]}
+            />        
+            <Coffee 
+            position={[u(80), u(98), -u(90)]}
+            scale={[side/1500, side/1500, side/1500]}
+            />
         </Suspense>
     )
 }
@@ -32,10 +32,10 @@ const Models = () => {
 const TopFace = () => {
     // Note that when using u, the percentages need to be doubled as I decided to make the cube face half the { side } length. Doubling numbers here is easier than fixing relative css in each component
     // Scaling still uses essentially arbitrary "fix" factors as models come in different sizes
-    const { u, side } = useDimensions()
+    const { u } = useDimensions()
 
     return (
-        <>
+        <Suspense fallback={null}>
         <Models />
         <group>
         {/* Cube */}
@@ -78,7 +78,7 @@ const TopFace = () => {
             />
         </mesh>
         </group>
-        </>
+        </Suspense>
     )
 }
 

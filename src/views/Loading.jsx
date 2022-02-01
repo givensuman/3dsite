@@ -42,21 +42,27 @@ const LoaderBar = styled.div`
 `
 
 const Warning = styled.div`
-    font-size: 2rem;
-    max-width: 500px;
+    font-size: 1.5rem;
+    max-width: 80%;
     padding: 0 15px 0;
 
     button {
-        margin-top: 2%;
+        margin-top: 5%;
         padding: 1em;
         border-radius: 0.5em;
         border: none;
         background-color: ${theme.background};
         color: ${theme.light};
         font-size: 75%;
+        transition: opacity 0.3s;
+        transition-delay: 0.5s;
 
         &:disabled {
             opacity: 0.3;
+        }
+
+        &:nth-child(2) {
+            background-color: ${theme.dark};
         }
     }
 `
@@ -89,7 +95,14 @@ const Loading = ({ progress, loading, mobile, setLoading }) => {
                 This webpage renders in 3D, and mobile users may experience poor performance.
                 <button
                 disabled={progress < 100}
-                onClick={() => setLoading(false)}>Continue</button>
+                onClick={() => setLoading(false)}
+                >
+                    Continue
+                    {/* Continue in 3D */}
+                </button>
+                {/* <button>
+                    Go to mobile-friendly version
+                </button> */}
             </Warning>
             }
         </Wrapper>

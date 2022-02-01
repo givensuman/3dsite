@@ -84,13 +84,16 @@ const Desktop = styled.div`
 
     #time {
         background-color: ${theme.dark};
-        font-size: ${props => props.p(0.4)};
+        font-size: ${props => props.p(2)}px;
         display: flex;
         justify-content: flex-end;
-        padding-right: 0.2em;
         position: fixed;
         bottom: 0;
-        width: 99%;
+        width: 100%;
+        
+        span {
+            margin-right: 2%;
+        }
     }
 
     #todo {
@@ -108,6 +111,7 @@ const Desktop = styled.div`
         right: 20%;
         border-radius: 0.5em;
         padding: 0 2px 5px;
+        overflow: hidden;
 
         h3 {
             padding: 2%;
@@ -118,6 +122,7 @@ const Desktop = styled.div`
 const List = styled.ul`
     padding: 2%;
     list-style-type: none;
+    font-size: inherit;
 
     li {
         margin-bottom: 3em;
@@ -135,6 +140,7 @@ const Screen = () => {
         let time = new Date().toTimeString().substr(0, 5)
         setTime(time)
     }
+    useEffect(() => getTime(), [])
     useInterval(getTime, 60000)
 
     return (
@@ -173,11 +179,11 @@ const Screen = () => {
             >
             <Desktop p={p}>
                 <div id='time' className='row'>
-                    {time}
+                    <span>{time}</span>
                 </div>
                 <div id='todo' className='col'>
                     <h3>TODO:</h3>
-                    <List>
+                    <List p={p}>
                         <li>Put vanilla pudding in mayo jar. Eat in public.</li>
                         <li>Hire two private investigators. Task them to follow each other.</li>
                         <li>Ask someone what year it is, then yell out "It worked!"</li>
