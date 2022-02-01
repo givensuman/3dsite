@@ -14,15 +14,15 @@ const Wrapper = styled.div`
         user-select: none;
     }
 
-    a {
-        width: 50%;
-        height: 20%;
+    #contact-me {
+        width: ${props => props.p(20)}px;
+        height: ${props => props.p(10)}px;
         border: none;
         color: ${theme.accent5};
         font-size: ${props => props.p(3)}px;
         cursor: pointer;
         transition: box-shadow 0.4s, background-position 0.5s ease-out;
-        border-radius: 0.5em;
+        border-radius: 0.2em;
         background-color: ${theme.accent2};
         background-size: 200% 200%;
         background-position: right;
@@ -40,18 +40,23 @@ const Wrapper = styled.div`
     }
 `
 
-const BottomFace = ({ face }) => {
+export const ContactFlat = ({ p }) => {
+
+    return (
+        <Wrapper p={p} className='col center'>
+            <h1>Get In Touch</h1>
+            <a id='contact-me' className='row center' href='mailto:givensuman@gmail.com'>Say Hello</a>
+        </Wrapper>
+)
+}
+
+const Contact = ({ face }) => {
 
     const { p } = useDimensions()
 
     return (
-        <CubeFace face={face}>
-            <Wrapper p={p} className='col center'>
-                <h1>Get In Touch</h1>
-                <a className='row center' href='mailto:givensuman@gmail.com'>Say Hello</a>
-            </Wrapper>
-        </CubeFace>
+        <CubeFace face={face}><ContactFlat p={p} /></CubeFace>
     )
 }
 
-export default BottomFace
+export default Contact

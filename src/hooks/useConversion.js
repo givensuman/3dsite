@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 
-// Okay future Given, or whatever poor sap is reading this, this is the worst file in this whole project. 
 // Basically, three.js units are arbitrary, and because we want to 
 // render DOM stuff we need a way to consistently convert units into 
 // pixels and vice versa for model rendering. Based on the components 

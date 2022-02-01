@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 import theme from '../styles/theme'
-import { useStore } from '@react-three/fiber'
 
 import Name from '../components/Name'
 
@@ -72,6 +72,7 @@ const Loading = ({ progress, loading, mobile, setLoading }) => {
     useEffect(() => {
         setColor(randomBackground())
     }, [])
+    const navigate = useNavigate()
 
     return (
     <AnimatePresence>
@@ -97,12 +98,11 @@ const Loading = ({ progress, loading, mobile, setLoading }) => {
                 disabled={progress < 100}
                 onClick={() => setLoading(false)}
                 >
-                    Continue
-                    {/* Continue in 3D */}
+                    Continue in 3D
                 </button>
-                {/* <button>
+                <button onClick={() => navigate('/2d')}>
                     Go to mobile-friendly version
-                </button> */}
+                </button>
             </Warning>
             }
         </Wrapper>

@@ -1,9 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { 
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom'
 import './styles/index.css'
+
 import App from './App'
+import Square from './views/Square'
 
 ReactDOM.render(
-    <App />,
+  <Router>
+    <Routes>
+      <Route path='/2d' element={<Square />} />
+      <Route path='/*' element={<App />} />
+    </Routes>
+  </Router>,
   document.getElementById('root')
 )

@@ -1,11 +1,33 @@
 import React, { useState, useEffect, useRef, Suspense } from 'react'
+import { useNavigate } from 'react-router-dom'
+import styled from '@emotion/styled'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, useProgress } from '@react-three/drei'
+
+import theme from './styles/theme'
 
 import Cube from './views/Cube'
 import Loading from './views/Loading'
 
 import spaceBackground from './assets/misc/space.jpg'
+
+const Button = styled.button`
+    position: absolute;
+    top: 1%;
+    right: 2%;
+    background-color: transparent;
+    border: 1px solid ${theme.light};
+    border-radius: 0.2em;
+    color: ${theme.light};
+    padding: 0.5em;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: ${theme.accent5};
+    }
+`
 
 const App = () => { 
     
@@ -38,6 +60,8 @@ const App = () => {
         if (!mobile && !active) setTimeout(() => setLoading(false), 500)
     }, [active])
 
+    const navigate = useNavigate()
+
     return (
         <>
         <Loading 
@@ -57,7 +81,7 @@ const App = () => {
         position: 'absolute'
         }}
         camera={{
-        position: [0, 8, 24], 
+        position: [0, 8, 30], 
         fov: 50 
         }}
         >
@@ -66,10 +90,11 @@ const App = () => {
         <pointLight position={[0, 60, -100]} intensity={0.1} />
         <pointLight position={[-50, 0, -50]} intensity={0.2} />
         <pointLight position={[10, 10, 10]} intensity={0.7} />
-        <Suspense fallback={null}>
+        <Suspense fallback={() => navigate('/2d')}>
             <Cube />
         </Suspense>
         </Canvas>
+        {!loading && <Button onClick={() => navigate('2d')}>View In 2D</Button>}
         </>
     )
 }

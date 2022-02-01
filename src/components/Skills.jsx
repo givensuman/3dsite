@@ -102,41 +102,46 @@ const skillsArray=[
     },
 ]
 
-const Skills = ({ face }) => {
+export const SkillsFlat = ({ p }) => {
 
+    return (
+        <Wrapper className='col center' p={p}>
+        <h1 className='row center'>
+            <img 
+            src={require('../assets/misc/hackercat.png')}
+            alt='skills' 
+            />
+            My Skills
+        </h1>
+        <SkillsWrapper>
+        {skillsArray.map((item, index) =>
+            <div key={index}>
+            <Tooltip
+            content={item.name}
+            background={theme.dark}
+            color={theme.light}
+            radius={5}
+            border={'transparent'}
+            fadeEasing='ease-in-out'
+            fadeDuration={200}
+            >
+                <LogoWrapper p={p}>
+                { React.cloneElement(item.component) }
+                </LogoWrapper>
+            </Tooltip>
+            </div>
+        )}
+        </SkillsWrapper>
+        </Wrapper>
+    )
+}
+
+const Skills = ({ face }) => {
+    
     const { p } = useDimensions()
 
     return (
-        <CubeFace face={face}>
-            <Wrapper className='col center' p={p}>
-            <h1 className='row center'>
-                <img 
-                src={require('../assets/misc/hackercat.png')}
-                alt='skills' 
-                />
-                My Skills
-            </h1>
-            <SkillsWrapper>
-            {skillsArray.map((item, index) =>
-                <div key={index}>
-                <Tooltip
-                content={item.name}
-                background={theme.dark}
-                color={theme.light}
-                radius={5}
-                border={'transparent'}
-                fadeEasing='ease-in-out'
-                fadeDuration={200}
-                >
-                    <LogoWrapper p={p}>
-                    { React.cloneElement(item.component) }
-                    </LogoWrapper>
-                </Tooltip>
-                </div>
-            )}
-            </SkillsWrapper>
-            </Wrapper>
-        </CubeFace>
+        <CubeFace face={face}><SkillsFlat p={p} /></CubeFace>
     )
 }
 

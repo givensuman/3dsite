@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import Tooltip from 'react-simple-tooltip'
 
@@ -55,9 +55,7 @@ const Wrapper = styled.div`
     }
 `
 
-const Github = ({ face }) => {
-
-    const { p } = useDimensions()
+export const GithubFlat = ({ p }) => {
 
     const iconProps = {
         maxHeight: p(2.8),
@@ -66,41 +64,48 @@ const Github = ({ face }) => {
     }
 
     return (
-        <CubeFace face={face}>
-            <Wrapper p={p}>
-            <div className='row left'>
-                <Tooltip
-                content="Isn't he dreamy?"
-                background={theme.dark}
-                color={theme.light}
-                radius={5}
-                border={'transparent'}
-                fadeEasing='ease-in-out'
-                fadeDuration={200}
-                >
-                <img
-                id='avatar'
-                src={require('../assets/misc/github_profile.png')}
-                alt='profile'
-                />
-                </Tooltip>
-                <a
-                id='github'
-                href='https://www.github.com/givensuman' 
-                className='row center'
-                >
-                    <CodeBranch style={iconProps} />
-                    <span>Check out my GitHub</span>
-                    <ArrowRight style={iconProps} />
-                </a>
-            </div>
+        <Wrapper p={p}>
+        <div className='row left'>
+            <Tooltip
+            content="Isn't he dreamy?"
+            background={theme.dark}
+            color={theme.light}
+            radius={5}
+            border={'transparent'}
+            fadeEasing='ease-in-out'
+            fadeDuration={200}
+            >
             <img
-            id='stats'
-            src={require('../assets/misc/language_stats.png')}
-            alt='language stats'
+            id='avatar'
+            src={require('../assets/misc/github_profile.png')}
+            alt='profile'
             />
-            </Wrapper>
-        </CubeFace>
+            </Tooltip>
+            <a
+            id='github'
+            href='https://www.github.com/givensuman' 
+            className='row center'
+            >
+                <CodeBranch style={iconProps} />
+                <span>Check out my GitHub</span>
+                <ArrowRight style={iconProps} />
+            </a>
+        </div>
+        <img
+        id='stats'
+        src={require('../assets/misc/language_stats.png')}
+        alt='language stats'
+        />
+        </Wrapper>
+    )
+}
+
+const Github = ({ face }) => {
+
+    const { p } = useDimensions()
+
+    return (
+        <CubeFace face={face}><GithubFlat p={p} /></CubeFace>
     )
 }
 

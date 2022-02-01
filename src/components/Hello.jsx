@@ -27,21 +27,26 @@ const Wrapper = styled.div`
     }
 `
 
+export const HelloFlat = ({ p, dimension }) => {
+
+    return (
+        <Wrapper p={p} dimensions={dimension}>   
+        <h1>Hi! I'm <Name>Given.</Name></h1>
+        <h2>I build things on the web.</h2>
+        <h3>(Like this... <span>cube</span> thing)</h3>
+        <p>I'm a chemist turned web developer - reactions to React.</p>
+        <p>Take a look around and tell me what you think!</p>
+        </Wrapper>
+    )
+}
+
 const Hello = ({ face }) => {
 
     const { p } = useDimensions()
 
     return (
-        <CubeFace face={face}>
-            <Wrapper p={p}>   
-            <h1>Hi! I'm <Name>Given.</Name></h1>
-            <h2>I build things on the web.</h2>
-            <h3>(Like this... cube thing)</h3>
-            <p>I'm a chemist turned web developer - reactions to React.</p>
-            <p>Take a look around and tell me what you think!</p>
-            </Wrapper>
-        </CubeFace>
-)
+        <CubeFace face={face}><HelloFlat p={p}/></CubeFace>
+    )
 }
 
 export default Hello

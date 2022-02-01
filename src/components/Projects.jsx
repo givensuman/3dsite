@@ -78,36 +78,41 @@ const projectsArray = [
     }
 ]
 
+export const ProjectsFlat = ({ p }) => {
+
+    return (
+        <Wrapper p={p} className='col center'>
+            <h1>Popular Projects</h1>
+            <div className='col'>
+                {projectsArray.map((item, index) => 
+                <div key={index} style={{ position: 'relative' }}>
+                    <a href={item.href}>
+                    <Project
+                    p={p}
+                    orientation={index%2 === 0 ? 'right' : 'left'}
+                    src={item.src}
+                    alt={item.name}
+                    />
+                    </a>
+                    <Description
+                    p={p}
+                    orientation={index%2 === 0 ? 'right' : 'left'}
+                    >
+                        {item.description}
+                    </Description>
+                </div>
+                )}
+            </div>
+        </Wrapper>
+    )
+}
+
 const Projects = ({ face }) => {
 
     const { p } = useDimensions()
-
+    
     return (
-        <CubeFace face={face}>
-            <Wrapper p={p} className='col center'>
-                <h1>Popular Projects</h1>
-                <div className='col'>
-                    {projectsArray.map((item, index) => 
-                    <div key={index} style={{ position: 'relative' }}>
-                        <a href={item.href}>
-                        <Project
-                        p={p}
-                        orientation={index%2 === 0 ? 'right' : 'left'}
-                        src={item.src}
-                        alt={item.name}
-                        />
-                        </a>
-                        <Description
-                        p={p}
-                        orientation={index%2 === 0 ? 'right' : 'left'}
-                        >
-                            {item.description}
-                        </Description>
-                    </div>
-                    )}
-                </div>
-            </Wrapper>
-        </CubeFace>
+        <CubeFace face={face}><ProjectsFlat p={p} /></CubeFace>
     )
 }
 
