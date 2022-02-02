@@ -20,6 +20,10 @@ const Wrapper = styled.div`
 
     h3 {
         font-size: ${props => props.p(1.5)}px;
+
+        span {
+            opacity: ${props => props.flat ? '0.2' : '1'};
+        }
     }
 
     p {
@@ -27,10 +31,10 @@ const Wrapper = styled.div`
     }
 `
 
-export const HelloFlat = ({ p, dimension }) => {
+export const HelloFlat = ({ p, flat }) => {
 
     return (
-        <Wrapper p={p} dimensions={dimension}>   
+        <Wrapper p={p} flat={flat}>   
         <h1>Hi! I'm <Name>Given.</Name></h1>
         <h2>I build things on the web.</h2>
         <h3>(Like this... <span>cube</span> thing)</h3>
@@ -45,7 +49,7 @@ const Hello = ({ face }) => {
     const { p } = useDimensions()
 
     return (
-        <CubeFace face={face}><HelloFlat p={p}/></CubeFace>
+        <CubeFace face={face}><HelloFlat p={p} flat={false} /></CubeFace>
     )
 }
 

@@ -67,7 +67,7 @@ const Square = () => {
     const navigate = useNavigate()
 
     const components = [
-        <HelloFlat />,
+        <HelloFlat flat={true} />,
         <GithubFlat />,
         <ProjectsFlat />,
         <SkillsFlat />,
