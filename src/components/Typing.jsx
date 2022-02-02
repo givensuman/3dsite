@@ -1,32 +1,13 @@
-import React from 'react'
-import styled from '@emotion/styled'
-import Typist from 'react-typist'
+import { useEffect, useRef } from "react"
+import Typed from "typed.js"
 
-import { useDimensions } from '../hooks/useConversion'
-
-const StyledTypist = styled(Typist)`
-    padding: 5px 5px;
-
-    pre {
-        margin: 0;
-        font-size: 20%;
-    }
-`
 
 const Typing = () => {
-
-    const { p } = useDimensions()
-
-    return (
-        <StyledTypist
-        p={p}
-        cursor={{
-            show: false
-        }}
-        >
-<pre>import * as THREE from 'three'</pre>
-<Typist.Delay ms={800} />
-<pre>{`
+    const el = useRef()
+    useEffect(() => {
+        const typed = new Typed(el.current, {
+            strings: [
+`
 // Create plane mesh
 const planeGeometry = new THREE.PlaneGeometry(100, 100, 10, 10)
 const planeMaterial = new THREE.MeshStandardMaterial({
@@ -36,10 +17,7 @@ const planeMaterial = new THREE.MeshStandardMaterial({
 const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial)
 planeMesh.receiveShadow = true
 scene.add(planeMesh)
-`}</pre>
-<Typist.Delay ms={800} />
-<Typist.Delay ms={800} />
-<pre>{`
+
 // Create ball mesh
 const ballGeometry = new THREE.SphereGeometry()
 const ballMaterial = new THREE.MeshStandardMaterial({
@@ -49,11 +27,19 @@ const ballMesh = new THREE.Mesh(ballGeometry, ballMaterial)
 ballMesh.castShadow = true
 ballMesh.position.z += 0.4
 scene.add(ballMesh)
-`}</pre>
-<br />
-<Typist.Delay ms={800} />
-<pre>render()</pre>
-        </StyledTypist>
+
+render()
+            `],
+            typeSpeed: 10
+        })
+
+        return () => typed.destroy()
+    }, [])    
+
+    return (
+        <>
+        <pre ref={el}></pre>
+        </>
     )
 }
 
