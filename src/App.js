@@ -76,8 +76,8 @@ const App = () => {
         backgroundImage: `url(${spaceBackground})`,
         backgroundSize: '100% 100%',
         backgroundRepeat: 'norepeat',
-        height: dimensions.height,
-        width: dimensions.width,
+        height: loading ? '0px' : dimensions.height,
+        width: loading ? '0px' : dimensions.width,
         position: 'absolute'
         }}
         camera={{
