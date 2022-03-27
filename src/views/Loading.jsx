@@ -25,6 +25,10 @@ const Wrapper = styled(motion.div)`
     font-size: 3rem;
     font-weight: bold;
     z-index: 2;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
 `
 
 const LoaderHolder = styled.div`

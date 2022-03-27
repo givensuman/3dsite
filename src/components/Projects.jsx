@@ -15,6 +15,7 @@ const Wrapper = styled.div`
 
 const Project = styled.img`
     max-width: ${props => props.p(20)}px;
+    max-height: ${props => props.p(14)}px;
     position: relative;
     margin: ${props => props.p(0.2)}px;
     border-radius: 0.5em;
@@ -70,11 +71,17 @@ const projectsArray = [
         description: 'An app for helping my girlfriend pick a restaurant',
         href: 'https://girlfriendeats.herokuapp.com/'
     },
+    // {
+    //     name: 'moot',
+    //     src: require('../assets/misc/moot.png'),
+    //     description: 'Color-blind friendly syntax highlighting for VSCode',
+    //     href: 'https://moottheme.netlify.app'
+    // }
     {
-        name: 'moot',
-        src: require('../assets/misc/moot.png'),
-        description: 'Color-blind friendly syntax highlighting for VSCode',
-        href: 'https://moottheme.netlify.app'
+        name: 'gitglance',
+        src: require('../assets/misc/gitglance.png'),
+        description: 'An app for quick looks at a GitHub profile',
+        href: 'https://gitglance.netlify.app'
     }
 ]
 
