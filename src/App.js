@@ -85,7 +85,7 @@ const App = () => {
         fov: 50 
         }}
         >
-        <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
+        <OrbitControls enablePan enableZoom enableRotate enableDamping />
         <ambientLight intensity={0.1} />
         <pointLight position={[0, 60, -100]} intensity={0.1} />
         <pointLight position={[-50, 0, -50]} intensity={0.2} />
