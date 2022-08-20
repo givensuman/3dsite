@@ -48,10 +48,11 @@ const SkillsWrapper = styled.div`
 `
 
 const LogoWrapper = styled.div`
-    max-width: ${props => props.p(10)}px;
+    width: ${props => props.p(12)}px;
     height: auto;
-    margin: ${props => props.p(0.75)}px;
+    margin: ${props => props.p(1)}px;
     display: flex;
+    justify-content: center;
     transition: transform 0.2s;
 
     &:hover {
@@ -72,10 +73,10 @@ const skillsArray=[
         name: 'React',
         component: <ReactSVG />
     },
-    {
-        name: 'Vue',
-        component: <Vue />
-    },
+    // {
+    //     name: 'Vue',
+    //     component: <Vue />
+    // },
     {
         name: 'Node',
         component: <Node />
@@ -88,14 +89,14 @@ const skillsArray=[
         name: 'UI',
         component: <Bootstrap />
     },
-    {
-        name: 'Figma',
-        component: <Figma />
-    },
-    {
-        name: 'Python',
-        component: <Python />
-    },
+    // {
+    //     name: 'Figma',
+    //     component: <Figma />
+    // },
+    // {
+    //     name: 'Python',
+    //     component: <Python />
+    // },
     {
         name: ';^)',
         component: <StackOverflow />
