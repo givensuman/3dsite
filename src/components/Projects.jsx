@@ -77,11 +77,17 @@ const projectsArray = [
     //     description: 'Color-blind friendly syntax highlighting for VSCode',
     //     href: 'https://moottheme.netlify.app'
     // }
+    // {
+    //     name: 'gitglance',
+    //     src: require('../assets/misc/gitglance.png'),
+    //     description: 'An app for quick looks at a GitHub profile',
+    //     href: 'https://gitglance.netlify.app'
+    // }
     {
-        name: 'gitglance',
-        src: require('../assets/misc/gitglance.png'),
-        description: 'An app for quick looks at a GitHub profile',
-        href: 'https://gitglance.netlify.app'
+        name: 'colorblindtheme',
+        src: require('../assets/misc/colorblindtheme.png'),
+        description: 'Color-blind friendly syntax highlighting for VSCode',
+        href: 'https://colorblind-theme.netlify.app/'
     }
 ]
 
