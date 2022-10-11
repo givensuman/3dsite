@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, Suspense } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from '@emotion/styled'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, useProgress } from '@react-three/drei'
+import { OrbitControls, useProgress, Stars } from '@react-three/drei'
 
 import theme from './styles/theme'
 
@@ -73,12 +73,10 @@ const App = () => {
         <Canvas
         ref={canvasRef}
         style={{ 
-        backgroundImage: `url(${spaceBackground})`,
-        backgroundSize: '100% 100%',
-        backgroundRepeat: 'norepeat',
+        background: 'rgb(41,38,91)',
+        backgroundImage: 'radial-gradient(circle, rgba(41,38,91,1) 0%, rgba(29,15,42,1) 50%, rgba(17,8,29,1) 100%)',
         height: loading ? '0px' : dimensions.height,
-        width: loading ? '0px' : dimensions.width,
-        position: 'absolute'
+        width: loading ? '0px' : dimensions.width
         }}
         camera={{
         position: [0, 8, 30], 
@@ -91,6 +89,7 @@ const App = () => {
         <pointLight position={[-50, 0, -50]} intensity={0.2} />
         <pointLight position={[10, 10, 10]} intensity={0.7} />
         <Suspense fallback={() => navigate('/2d')}>
+            <Stars radius={100} depth={50} count={5000} factor={6} saturation={100} fade speed={2} />
             <Cube />
         </Suspense>
         </Canvas>
