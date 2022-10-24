@@ -11,6 +11,7 @@ import { ReactComponent as Javascript } from '../assets/logos/javascript.svg'
 import { ReactComponent as Typescript } from '../assets/logos/typescript.svg'
 import { ReactComponent as ReactSVG } from '../assets/logos/react.svg'
 import { ReactComponent as Vue } from '../assets/logos/vue.svg'
+import { ReactComponent as Next } from '../assets/logos/nextjs.svg'
 import { ReactComponent as Node } from '../assets/logos/node.svg'
 import { ReactComponent as Sass } from '../assets/logos/sass.svg'
 import { ReactComponent as Bootstrap } from '../assets/logos/bootstrap.svg'
@@ -35,7 +36,7 @@ const Wrapper = styled.div`
     }
 
     svg {
-        max-height: ${props => props.p(10)}px;
+        max-height: ${props => props.p(8)}px;
     }
 `
 
@@ -70,6 +71,10 @@ const skillsArray=[
         component: <Typescript />
     },
     {
+        name: 'Sass',
+        component: <Sass />
+    },
+    {
         name: 'React',
         component: <ReactSVG />
     },
@@ -78,15 +83,15 @@ const skillsArray=[
         component: <Vue />
     },
     {
-        name: 'Node',
-        component: <Node />
+        name: 'NextJS',
+        component: <Next />
     },
+    // {
+    //     name: 'Node',
+    //     component: <Node />
+    // },
     {
-        name: 'Sass',
-        component: <Sass />
-    },
-    {
-        name: 'UI',
+        name: 'UI/UX',
         component: <Bootstrap />
     },
     // {
@@ -118,13 +123,13 @@ export const SkillsFlat = ({ p }) => {
         {skillsArray.map((item, index) =>
             <div key={index}>
             <Tooltip
-            content={item.name}
-            background={theme.dark}
-            color={theme.light}
-            radius={5}
-            border={'transparent'}
-            fadeEasing='ease-in-out'
-            fadeDuration={200}
+                content={item.name}
+                background={theme.dark}
+                color={theme.light}
+                radius={5}
+                border={'transparent'}
+                fadeEasing='ease-in-out'
+                fadeDuration={200}
             >
                 <LogoWrapper p={p}>
                 { React.cloneElement(item.component) }
