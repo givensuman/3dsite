@@ -19,15 +19,11 @@ const Project = styled.img`
     position: relative;
     margin: ${props => props.p(0.2)}px;
     border-radius: 0.5em;
-    background: linear-gradient(to right, 
-        ${theme.accent3}, 
-        ${theme.accent1}, 
-        ${theme.accent4}
-    );
-    border: solid 2px;
-    border-color: ${theme.accent2};
+    background: none;
+    border: solid 0.15em;
+    border-color: transparent;
     cursor: pointer;
-    transition: border-color 0.4s;
+    transition: background 0.4s;
     ${props => {
         if (props.orientation === 'left') {
             return `right: 45%;`
@@ -36,7 +32,12 @@ const Project = styled.img`
         }
     }}
     &:hover {
-        border-color: transparent;
+        border-color: transparent;    
+        background: linear-gradient(to right, 
+            ${theme.accent3}, 
+            ${theme.accent1}, 
+            ${theme.accent4}
+        );
     }
 `
 

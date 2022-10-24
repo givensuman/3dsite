@@ -4,12 +4,12 @@ import { Html } from '@react-three/drei'
 
 import { useDimensions } from '../hooks/useConversion'
 
-import wallpaperSrc from '../assets/misc/wallpaper.png'
+import screenshotSrc from '../assets/misc/screenshot.png'
 
 const Wrapper = styled.div`
-    height: ${props => props.p(23)}px;
-    width: ${props => props.p(35)}px;
-    border-radius: 0.2em;
+    height: ${props => props.p(12.25)}px;
+    width: ${props => props.p(22.35)}px;
+    border-radius: 20em;
 `
 
 const Wallpaper = styled.img`
@@ -25,13 +25,13 @@ const Screen = () => {
         <Html 
         transform
         occlude
-        position={[0, u(170), -u(119)]}
-        rotation={[-0.2, 0, 0]}
+        position={[u(7.25), u(137), -u(112)]}
+        rotation={[-0, 0.1, 0]}
         >
         <Wrapper p={p}>
             <Wallpaper
             alt="Wallpaper"
-            src={wallpaperSrc}
+            src={screenshotSrc}
             />
         </Wrapper>
         </Html>

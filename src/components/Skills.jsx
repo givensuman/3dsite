@@ -73,10 +73,10 @@ const skillsArray=[
         name: 'React',
         component: <ReactSVG />
     },
-    // {
-    //     name: 'Vue',
-    //     component: <Vue />
-    // },
+    {
+        name: 'Vue',
+        component: <Vue />
+    },
     {
         name: 'Node',
         component: <Node />
@@ -93,10 +93,10 @@ const skillsArray=[
     //     name: 'Figma',
     //     component: <Figma />
     // },
-    // {
-    //     name: 'Python',
-    //     component: <Python />
-    // },
+    {
+        name: 'Python',
+        component: <Python />
+    },
     {
         name: ';^)',
         component: <StackOverflow />
@@ -112,7 +112,7 @@ export const SkillsFlat = ({ p }) => {
             src={require('../assets/misc/hackercat.png')}
             alt='skills' 
             />
-            My Skills
+            Favorite Tech
         </h1>
         <SkillsWrapper>
         {skillsArray.map((item, index) =>

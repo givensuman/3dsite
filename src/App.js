@@ -9,8 +9,6 @@ import theme from './styles/theme'
 import Cube from './views/Cube'
 import Loading from './views/Loading'
 
-import spaceBackground from './assets/misc/space.jpg'
-
 const Button = styled.button`
     position: absolute;
     top: 1%;

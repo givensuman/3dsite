@@ -14,7 +14,8 @@ const Wrapper = styled.div`
     #avatar {
         border-radius: 50%;
         height: ${props => props.p(20)}px;
-        border: solid 2px ${theme.accent2};
+        margin-top: ${props => props.p(1)}px;
+        margin-left: ${props => props.p(1)}px;
     }
 
     #stats {
