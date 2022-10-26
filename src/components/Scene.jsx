@@ -66,7 +66,7 @@ const Models = () => {
                 scale={[side/300, side/300, side/300]}
             />
             <Mousepad
-                position={[u(27), u(-35), u(7)]}
+                position={[u(27), u(-34), u(7)]}
                 scale={[side/600, side/600, side/500]}
                 rotation={[0, Math.PI/2, 0]}
             />
@@ -96,6 +96,21 @@ const TopFace = () => {
                     <boxBufferGeometry attach='geometry' args={
                         [u(199), u(199), u(199)]
                     } />
+                    <meshBasicMaterial
+                        attach='material'
+                        // map={woodTexture}
+                        color={theme.accent5}
+                        side={THREE.DoubleSide}
+                    />
+                </mesh>
+                {/* Desk */}
+                <mesh
+                    position={[0, u(99.1), -u(100)]}
+                >
+                    <boxBufferGeometry
+                        attach='geometry'
+                        args={[u(198), u(1), u(198)]}
+                    />
                     <meshBasicMaterial
                         attach='material'
                         map={woodTexture}

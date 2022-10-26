@@ -15,7 +15,7 @@ padding: 0.5em;
 `
 
 const CubeFace = ({ children, face }) => {
-    const { p, u } = useDimensions()
+    const { p, u, side } = useDimensions()
     const { position, rotation } = arrangeGeometry(face, u(100))
     return (
             <Html 
@@ -26,7 +26,7 @@ const CubeFace = ({ children, face }) => {
             rotation-y={rotation.y}
             rotation-z={rotation.z}
             >
-                <Wrapper length={p(50)}>
+                <Wrapper length={side/2}>
                     {children}
                 </Wrapper>
             </Html>

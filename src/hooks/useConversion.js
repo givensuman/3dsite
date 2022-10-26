@@ -43,7 +43,7 @@ export default function GeometryProvider({ children }) {
 
     const [conversion] = useState({
         side: sideLength,
-        u: percentage => (percentage/100) * (sideLength/155),
+        u: percentage => (percentage/100) * (sideLength/154),
         p: percentage =>  (percentage/100) * (sideLength)
     })
 
