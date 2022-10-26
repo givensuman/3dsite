@@ -36,7 +36,7 @@ export const HelloFlat = ({ p, flat }) => {
 
     return (
         <Wrapper p={p} flat={flat}>   
-        <h1>Hi! I'm <Name>Given.</Name></h1>
+        <h1>Hi! I'm <Name p={p}>Given.</Name></h1>
         <h2>I build things on the web.</h2>
         <h3>(Like this... <span>cube</span> thing)</h3>
         <p>I'm a chemist turned web developer - reactions to React.</p>
