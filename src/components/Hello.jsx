@@ -9,6 +9,7 @@ import Name from './Name'
 const Wrapper = styled.div`
     user-select: none;
     padding: 0 1em;
+    margin: auto;
 
     h1 {
         font-size: ${props => props.p(6)}px;

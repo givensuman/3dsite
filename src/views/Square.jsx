@@ -39,11 +39,10 @@ const Button = styled.button`
     font-size: 0.9em;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
+    z-index: 10;
 
     &:hover {
-        background-color: ${theme.accent2};  
-
-
+        background-color: ${theme.accent5};
     }
 `
 

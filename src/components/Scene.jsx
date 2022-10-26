@@ -33,7 +33,7 @@ const Models = () => {
                 scale={[side / 1500, side / 1500, side / 1500]}
             />
             <Monitor 
-                position={[u(7), u(137), -u(115)]}
+                position={[u(7), u(135.5), -u(115)]}
                 scale={[side / 600, side / 600, side / 600]} 
                 rotation={[0, Math.PI*3/2 + 0.1, 0]}
             />
@@ -52,7 +52,7 @@ const Models = () => {
                 position={[u(-80), u(100), u(-130)]}
             />
             <RubiksCube 
-                position={[u(65), u(100), u(-115)]}
+                position={[u(65), u(99.5), u(-115)]}
                 scale={[side/8000, side/8000, side/8000]}
                 rotation={[0, -5, 0]} 
             />
@@ -66,7 +66,7 @@ const Models = () => {
                 scale={[side/300, side/300, side/300]}
             />
             <Mousepad
-                position={[u(27), u(-34), u(7)]}
+                position={[u(27), u(-32.5), u(7)]}
                 scale={[side/600, side/600, side/500]}
                 rotation={[0, Math.PI/2, 0]}
             />
