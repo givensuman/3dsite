@@ -20,7 +20,7 @@ const Project = styled.img`
     margin: ${props => props.p(0.2)}px;
     border-radius: 0.5em;
     background: none;
-    border: solid 0.15em;
+    border: solid ${props => props.p(0.4)}px;
     border-color: transparent;
     cursor: pointer;
     transition: background 0.4s;
@@ -45,9 +45,9 @@ const Description = styled.span`
     position: absolute;
     top: 30%;
     background-color: ${theme.accent5};
-    padding: 0.4em;
+    padding: ${props => props.p(1)}px;
     border-radius: 0.5em;
-    box-shadow: -4px 4px 10px ${theme.dark};
+    box-shadow: -${props => props.p(1)}px ${props => props.p(1)}px ${props => props.p(2.5)}px ${theme.dark};
     width: ${props => props.p(27)}px;
     font-size: ${props => props.p(2)}px;
     ${props => {

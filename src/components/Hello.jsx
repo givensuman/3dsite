@@ -8,7 +8,7 @@ import Name from './Name'
 
 const Wrapper = styled.div`
     user-select: none;
-    padding: 0 1em;
+    padding: 0 ${props => props.p(3)}px;
     margin: auto;
 
     h1 {
