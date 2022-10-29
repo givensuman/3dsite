@@ -7,8 +7,8 @@ import { useDimensions } from '../hooks/useConversion'
 import screenshotSrc from '../assets/misc/screenshot.png'
 
 const Wrapper = styled.div`
-    height: ${props => props.p(12.25)}px;
-    width: ${props => props.p(22.35)}px;
+    height: ${props => props.p(12.75)}px;
+    width: ${props => props.p(22.80)}px;
     border-radius: 20em;
 `
 
@@ -25,7 +25,7 @@ const Screen = () => {
         <Html 
         transform
         occlude
-        position={[u(7.25), u(137), -u(112)]}
+        position={[u(7.35), u(135.5), -u(112)]}
         rotation={[-0, 0.1, 0]}
         >
         <Wrapper p={p}>
