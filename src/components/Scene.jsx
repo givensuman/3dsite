@@ -66,7 +66,7 @@ const Models = () => {
                 scale={[side/300, side/300, side/300]}
             />
             <Mousepad
-                position={[u(27), u(-30), u(7)]}
+                position={[u(27), u(-31.5), u(7)]}
                 scale={[side/600, side/600, side/500]}
                 rotation={[0, Math.PI/2, 0]}
             />

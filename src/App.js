@@ -55,7 +55,7 @@ const App = () => {
 
     useEffect(() => {
         let mobile = isMobile()
-        if (!mobile && !active) setTimeout(() => setLoading(false), 500)
+        if (!mobile && !active) setTimeout(() => setLoading(false), 1500)
     }, [active])
 
     const navigate = useNavigate()

@@ -21,14 +21,25 @@ const Gui = () => {
     const { u, p } = useDimensions()
     const [visible, setVisible] = useState(true)
 
+    const handleInput = () => {
+        setTimeout(() => setVisible(false), 300)
+    }
+
     useEffect(() => {
-        const handleInput = () => 
-            setTimeout(() => setVisible(false), 300)
         window.addEventListener('mousedown', handleInput)
         window.addEventListener('contextmenu', handleInput)
         window.addEventListener('mousewheel', handleInput)
         window.addEventListener('ontouchmove', handleInput)
+
+        return () => {
+            window.removeEventListener('mousedown', handleInput)
+            window.removeEventListener('contextmenu', handleInput)
+            window.removeEventListener('mousewheel', handleInput)
+            window.removeEventListener('ontouchmove', handleInput)
+        }
     })
+
+
 
     return (
         <Html
