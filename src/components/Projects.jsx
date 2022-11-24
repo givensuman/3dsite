@@ -70,7 +70,7 @@ const projectsArray = [
         name: 'girlfriendeats',
         src: require('../assets/misc/girlfriendeats.png'),
         description: 'An app for helping my girlfriend pick a restaurant',
-        href: 'https://girlfriendeats.herokuapp.com/'
+        href: 'https://girlfriendeats.netlify.app/'
     },
     // {
     //     name: 'moot',
