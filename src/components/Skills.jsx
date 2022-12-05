@@ -15,6 +15,7 @@ import { ReactComponent as Next } from '../assets/logos/nextjs.svg'
 import { ReactComponent as Node } from '../assets/logos/node.svg'
 import { ReactComponent as Sass } from '../assets/logos/sass.svg'
 import { ReactComponent as Bootstrap } from '../assets/logos/bootstrap.svg'
+import { ReactComponent as Tailwind } from '../assets/logos/tailwind.svg'
 import { ReactComponent as Figma } from '../assets/logos/figma.svg'
 import { ReactComponent as Python } from '../assets/logos/python.svg'
 import { ReactComponent as StackOverflow } from '../assets/logos/stackoverflow.svg'
@@ -90,9 +91,13 @@ const skillsArray=[
     //     name: 'Node',
     //     component: <Node />
     // },
+    // {
+    //     name: 'UI/UX',
+    //     component: <Bootstrap />
+    // },
     {
-        name: 'UI/UX',
-        component: <Bootstrap />
+        name: 'Tailwind',
+        component: <Tailwind />
     },
     // {
     //     name: 'Figma',
