@@ -14,11 +14,12 @@ const Button = styled.button`
     top: 1%;
     right: 2%;
     background-color: transparent;
-    border: 1px solid ${theme.light};
-    border-radius: 0.2em;
+    border: 2px solid ${theme.light};
+    border-radius: 0.25em;
     color: ${theme.light};
     padding: 0.5em;
-    font-size: 0.9em;
+    font-size: 0.8em;
+    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
 
