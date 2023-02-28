@@ -2,9 +2,9 @@ import React from "react"
 import { motion } from "framer-motion"
 import clsx from 'clsx';
 
-const PageWrapper: React.FC<React.HTMLAttributes<React.AnimationEventHandler<HTMLDivElement>> & {
+const PageWrapper: React.FC<React.HTMLAttributes<HTMLDivElement> & {
     animationKey: React.Key
-}> = React.forwardRef(({
+}> = ({
     animationKey,
     children,
     className,
@@ -13,18 +13,21 @@ const PageWrapper: React.FC<React.HTMLAttributes<React.AnimationEventHandler<HTM
     return (
         <motion.div
             key={animationKey}
-            initial={{ x: 3000 }}
+            initial={{ x:"100vw" }}
             animate={{ x: 0 }}
-            exit={{ x: -3000 }}
-            className={clsx(
-                "relative w-screen min-h-screen flex flex-col",
-                className
-            )}
-            {...props}
+            exit={{ x: "-100vw" }}
         >
-            {children}
+            <div
+                className={clsx(
+                    "relative w-screen min-h-screen flex flex-col",
+                    className
+                )}
+                {...props}
+            >
+                {children}
+            </div>
         </motion.div>
     )
-})
+}
 
 export default PageWrapper
