@@ -1,13 +1,11 @@
-import React, { Suspense, useRef, useState } from 'react'
+import React, { Suspense, useState, useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Loader, useGLTF, OrbitControls, PerspectiveCamera, Stars, Html } from '@react-three/drei'
+import { OrbitControls, PerspectiveCamera, Stars, Html } from '@react-three/drei'
 import { useNavigate } from 'react-router-dom'
 
 import PageWrapper from '../components/PageWrapper'
-import Link from '../components/Link'
 import Model from '../components/Model'
 import useEventListener from '../hooks/useEventListener'
-import useTextEffect from '../hooks/useTextEffect';
 
 
 
@@ -32,6 +30,7 @@ const Home = () => {
     return (
         <PageWrapper
             animationKey="home"
+            animate={false}
             className="h-screen"
             style={{
                 background: "radial-gradient(#272730 50%, #171720 80%, #070710 100%)"
@@ -62,15 +61,18 @@ const Home = () => {
                         position={[0, -10, 0]}
                     >
                         <div className="flex space-x-6 md:space-x-8 lg:space-x-10 xl:space-x-12">
-                            <NavButton      onClick={() => navigate("/about")}
+                            <NavButton      
+                                onClick={() => navigate("/about")}
                             >
                                 About
                             </NavButton>
-                            <NavButton      onClick={() => navigate("/projects")}
+                            <NavButton      
+                                onClick={() => navigate("/projects")}
                             >
                                 Projects
                             </NavButton>
-                            <NavButton      onClick={() => navigate("/contact")}
+                            <NavButton      
+                                onClick={() => navigate("/contact")}
                             >
                                 Contact
                             </NavButton>

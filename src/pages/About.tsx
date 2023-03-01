@@ -1,41 +1,30 @@
 import React from "react"
 import { useRive, useStateMachineInput } from "@rive-app/react-canvas"
 
-import Link from "../components/Link"
 import PageWrapper from '../components/PageWrapper';
 
 const About = () => {
 
     const { rive, RiveComponent } = useRive({
         src: "/plant.riv",
-        stateMachines: "State Machine 1",
+        stateMachines: "Bird",
         autoplay: false
     })
 
-    const animateMiddle = useStateMachineInput(rive, "State Machine 1", "TriggerMiddle")
-    const animateTop = useStateMachineInput(rive, "State Machine 1", "TriggerUp")
-    const animateDown = useStateMachineInput(rive, "State Machine 1", "TriggerDown")
+    const animateMiddle = useStateMachineInput(rive, "Bird", "Middle")
+    const animateTop = useStateMachineInput(rive, "Bird", "Up")
+    const animateDown = useStateMachineInput(rive, "Bird", "Down")
 
     return (
         <PageWrapper 
             animationKey="about"
-            className="bg-yellow-700"
+            className="bg-yellow-700 -z-20"
         >
-            <Link href="/">
-                Home
-            </Link>
-            <Link href="/about" active>
-                About
-            </Link>
-            <button onClick={() => animateMiddle?.fire()}>
-                middle
-            </button>
-            <button onClick={() => animateTop?.fire()}>
-                Top
-            </button>
-            <button onClick={() => animateDown?.fire()}>
-                Down
-            </button>
+            <div>
+                <button onClick={() => animateMiddle?.fire()}>
+                    Mid
+                </button>
+            </div>
             <RiveComponent 
                 onMouseEnter={() => rive && rive.play()}
                 onMouseLeave={() => rive && rive.pause()}
@@ -43,6 +32,7 @@ const About = () => {
                     height: "100vh",
                     width: "100%"
                 }}
+                className="fixed top-0 bottom-0 right-0 left-0 -z-10"
             />
         </PageWrapper>
     )
