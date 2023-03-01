@@ -1,18 +1,17 @@
 import React, { useState, useRef, useEffect } from "react"
-import { useRive, useStateMachineInput } from "@rive-app/react-canvas"
+import { useRive } from "@rive-app/react-canvas"
 
 import PageWrapper from "../components/PageWrapper"
 import Confetti from "../components/Confetti"
+import Waves from "../components/Waves"
 
 const Contact = () => {
 
-   const { rive, RiveComponent } = useRive({
+   const { RiveComponent } = useRive({
       src: "/pup.riv",
       stateMachines: "Pup",
       autoplay: true
   })
-
-  const animate = useStateMachineInput(rive, "Pup", "hover")
 
   const [ showConfetti, setShowConfetti ] = useState(false)
   const timeoutRef = useRef<number | null>(null)
@@ -33,7 +32,7 @@ const Contact = () => {
    return (
       <PageWrapper
          animationKey="contact"
-         className="bg-slate-600"
+         className="bg-slate-600 overflow-y-hidden"
       >
          <div className="h-screen mt-24 max-h-96">
             <RiveComponent 
@@ -45,9 +44,10 @@ const Contact = () => {
                }}
             />
          </div>
-            {showConfetti && <>
-               <Confetti />
-            </>}
+         {showConfetti && <>
+            <Confetti />
+         </>}
+         <Waves className="w-full absolute bottom-0 z-0" />
       </PageWrapper>
    )
 }
