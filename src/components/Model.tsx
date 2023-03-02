@@ -9,14 +9,27 @@ source: https://sketchfab.com/models/91964c1ce1a34c3985b6257441efa500
 title: Space exploration [WLP series #8]
 */
 export default function Model({ url, ...props }) {
-    // @ts-ignore
-    const { nodes } = useGLTF(url)
-    return (
-        <group rotation={[-Math.PI / 2, 0, 0]} position={[0, -7, 0]} scale={7} {...props}>
-        <group rotation={[Math.PI / 13.5, -Math.PI / 5.8, Math.PI / 5.6]}>
-            <mesh receiveShadow castShadow geometry={nodes.planet002.geometry} material={nodes.planet002.material} />
-            <mesh geometry={nodes.planet003.geometry} material={nodes.planet003.material} />
-        </group>
-        </group>
+  // @ts-ignore
+  const { nodes } = useGLTF(url)
+  return (
+    <group
+      rotation={[-Math.PI / 2, 0, 0]}
+      position={[0, -7, 0]}
+      scale={7}
+      {...props}
+    >
+      <group rotation={[Math.PI / 13.5, -Math.PI / 5.8, Math.PI / 5.6]}>
+        <mesh
+          receiveShadow
+          castShadow
+          geometry={nodes.planet002.geometry}
+          material={nodes.planet002.material}
+        />
+        <mesh
+          geometry={nodes.planet003.geometry}
+          material={nodes.planet003.material}
+        />
+      </group>
+    </group>
   )
 }

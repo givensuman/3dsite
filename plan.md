@@ -1,10 +1,9 @@
 home page
 https://codesandbox.io/s/oep9o
 
-
 about page w/ scrolling
-    about me
-    favorite tech
+about me
+favorite tech
 https://rive.app/community/213-5769-growing-plant-wip/
 https://help.rive.app/runtimes/overview/react
 
