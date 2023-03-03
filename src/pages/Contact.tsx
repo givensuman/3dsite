@@ -7,7 +7,7 @@ import Wave from "react-wavify"
 
 import PageWrapper from "../components/PageWrapper"
 import Confetti from "../components/Confetti"
-import Rain from "../components/Rain"
+import Snow from "../components/Snow"
 
 const waveColors = [
   {
@@ -31,15 +31,12 @@ const Contact = () => {
     autoplay: true,
   })
 
-  const hover = useStateMachineInput(rive, "Pup", "hover") as StateMachineInput
+  const hover = useStateMachineInput(rive, "Pup", "hover") as StateMachineInput | null
 
   const [showConfetti, setShowConfetti] = useState(false)
 
-  const endAnimation = () => {
-    setShowConfetti(false)
-    if (hover) {
-      hover.value = false
-    }
+  if (hover) {
+    hover.value = showConfetti
   }
 
   const timeoutRef = useRef<number | null>(null)
@@ -58,12 +55,20 @@ const Contact = () => {
         "bg-sky-500": showConfetti
       })}
     >
-      <div className="h-screen mt-24 max-h-96 px-2 md:px-12">
+      <div 
+      className="h-1/2 mt-24 max-h-96 px-2 md:px-12 flex justify-center mx-auto"
+      style={{
+        width: "36rem",
+        maxWidth: "90vw"
+      }}
+      >
         <RiveComponent
-          className="cursor-pointer h-48"
+          className="cursor-pointer h-48 w-96"
           onClick={() => {
             setShowConfetti(true)
-            hover.value = true
+            if (hover) {
+              hover.value = true
+            }
             timeoutRef.current = setTimeout(() => {
               window.open(
                 "mailto:givensuman@gmail.com?subject=Hello Given!",
@@ -71,21 +76,11 @@ const Contact = () => {
               )
             }, 200)
           }}
-          onPointerEnter={() => {
-            if (showConfetti) {
-              hover.value = true
-            }
-          }}
-          onPointerLeave={() => {
-            if (showConfetti) {
-              hover.value = true
-            }
-          }}
         />
       </div>
-      {!showConfetti && (
-        <Rain />
-      )}
+      {/* {!showConfetti && (
+        <Snow />
+      )} */}
       {showConfetti && <>
         <Confetti />
         <div 
@@ -94,7 +89,7 @@ const Contact = () => {
           <motion.button
             key="stopconfettibutton"
             className="bg-slate-700 px-3 py-2 rounded-md hover:bg-slate-800 transition-colors text-lg"
-            onClick={endAnimation}
+            onClick={() => setShowConfetti(false)}
             initial={{ y: 100 }}
             animate={{ y: 0 }}
             exit={{ y: 100 }}

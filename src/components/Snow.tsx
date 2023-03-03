@@ -3,7 +3,7 @@ import Particles from "react-particles"
 import { loadFull } from "tsparticles"
 import type { Container, Engine } from "tsparticles-engine"
 
-export default function Confetti() {
+export default function Snow() {
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadFull(engine)
     console.log(engine)
@@ -17,6 +17,7 @@ export default function Confetti() {
     <Particles
       id="tsparticles2"
       init={particlesInit}
+      className="z-10"
       // loaded={particlesLoaded}
       options={{
          "autoPlay": true,
