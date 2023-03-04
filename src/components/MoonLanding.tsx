@@ -8,9 +8,8 @@ license: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 source: https://sketchfab.com/models/91964c1ce1a34c3985b6257441efa500
 title: Space exploration [WLP series #8]
 */
-export default function Model({ url, ...props }) {
-  // @ts-ignore
-  const { nodes } = useGLTF(url)
+export default function Model(props) {
+  const { nodes } = useGLTF("/moon_landing.glb")
   return (
     <group
       rotation={[-Math.PI / 2, 0, 0]}

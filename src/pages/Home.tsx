@@ -9,25 +9,17 @@ import {
 import { useNavigate } from "react-router-dom"
 
 import PageWrapper from "../components/PageWrapper"
-import Model from "../components/Model"
+import MoonLanding from "../components/MoonLanding"
+
 import useEventListener from "../hooks/useEventListener"
+import useWindowDimensions from "../hooks/useWindowDimensions"
 
 const Home = () => {
-  const [dimensions, setDimensions] = useState({
-    height: window.innerHeight,
-    width: window.innerWidth,
-  })
-
-  useEventListener("resize", () => {
-    setDimensions({
-      height: window.innerHeight,
-      width: window.innerWidth,
-    })
-  })
+  const dimensions = useWindowDimensions()
 
   const navigate = useNavigate()
 
-  const scale = Math.min(7, window.innerWidth / 40)
+  const scale = Math.min(7, dimensions.width / 40)
 
   return (
     <PageWrapper
@@ -79,8 +71,7 @@ const Home = () => {
           />
         </PerspectiveCamera>
         <Suspense fallback={null}>
-          <Model
-            url="/scene.glb"
+          <MoonLanding
             scale={[scale, scale, scale]}
             position={[0, -scale, 0]}
           />

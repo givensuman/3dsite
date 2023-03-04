@@ -9,6 +9,8 @@ import PageWrapper from "../components/PageWrapper"
 import Confetti from "../components/Confetti"
 import Snow from "../components/Snow"
 
+import useWindowDimensions from '../hooks/useWindowDimensions';
+
 const waveColors = [
   {
     dark: "#273036",
@@ -45,6 +47,8 @@ const Contact = () => {
       clearTimeout(timeoutRef.current)
     }
   }, [])
+
+  const { width } = useWindowDimensions()
 
   return (
     <PageWrapper
@@ -106,7 +110,7 @@ const Contact = () => {
           options={{
             height: 40 + (20 * i),
             amplitude: 20 + (2 * i),
-            speed: 0.15 + (0.025 * i),
+            speed: 0.15 + (0.05 * i),
             points: 3 + i
           }}
         />
