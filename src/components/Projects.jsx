@@ -64,7 +64,7 @@ const projectsArray = [
         name: 'johnmulapi',
         src: require('../assets/misc/johnmulapi.png'),
         description: 'A RESTful API for John Mulaney quotes',
-        href: 'https://johnmulapi.com/'
+        href: 'https://johnmulapi.netlify.app/'
     },
     {
         name: 'girlfriendeats',
