@@ -1,11 +1,13 @@
 import React from "react"
 import { PinContainer } from "./components/3d-pin"
+import Box from "./components/Box"
 import Title from "./components/Title"
 
 function App() {
   return (
     <>
       <Title />
+      <Box />
       <div className="h-[40rem] w-full flex items-center justify-center ">
         <PinContainer
           title="/ui.aceternity.com"
